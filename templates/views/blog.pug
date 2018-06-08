@@ -23,7 +23,8 @@ mixin post(post)
 block intro
 	.container
 		section#masthead
-			h1= data.category ? data.category.name : 'Felix Wutschke'
+			h1
+				a(href='/') Felix Wutschke
 		section#aboutme
 			p I write for myself; it helps me structure my thinking and retain information better.
 
