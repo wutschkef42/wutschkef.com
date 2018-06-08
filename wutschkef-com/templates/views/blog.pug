@@ -1,4 +1,4 @@
-extends ../layouts/default
+extends ../layouts/skeleton
 
 mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
@@ -16,33 +16,24 @@ mixin post(post)
 						|  
 			if post.author
 				| by #{post.author.name.first}
-		if post.image.exists
-			img(src=post._.image.fit(160,160)).img.pull-right
 		p!= post.content.brief
 		if post.content.extended
 			p.read-more: a(href='/blog/post/' + post.slug) Read more...
 
 block intro
 	.container
-		h1= data.category ? data.category.name : 'Blog'
+		section#masthead
+			h1= data.category ? data.category.name : 'Felix Wutschke'
+		section#aboutme
+			p I write for myself; it helps me structure my thinking and retain information better.
 
 block content
 	.container: .row
-		.col-sm-8.col-md-9
+		.col-lg-12
 			if filters.category && !data.category
 				h3.text-muted Invalid Category.
 			else
 				if data.posts.results.length
-					if data.posts.totalPages > 1
-						h4.text-weight-normal Showing 
-							strong #{data.posts.first}
-							|  to 
-							strong #{data.posts.last}
-							|  of 
-							strong #{data.posts.total}
-							|  posts.
-					else
-						h4.text-weight-normal Showing #{utils.plural(data.posts.results.length, '* post')}.
 					.blog
 						each post in data.posts.results
 							+post(post)
@@ -65,11 +56,5 @@ block content
 						h3.text-muted There are no posts in the category #{data.category.name}.
 					else
 						h3.text-muted There are no posts yet.
-		
-		if data.categories.length
-			.col-sm-4.col-md-3
-				h2 Categories
-				.list-group(style='margin-top: 70px;')
-					a(href='/blog', class=!data.category ? 'active' : false).list-group-item All Categories
-					each cat in data.categories
-						a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
+			
+			

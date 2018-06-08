@@ -1,23 +1,38 @@
-extends ../layouts/default
+extends ../layouts/skeleton.pug
 
 block content
-	.container: .jumbotron
-		img(src='/images/logo.svg', width='160')
-		h1 Welcome
-		p This is your new <a href='http://keystonejs.com' target='_blank'>KeystoneJS</a> website.
-		p It includes the latest versions of
-			| <a href='http://getbootstrap.com/' target='_blank'>Bootstrap</a>
-			| and <a href='http://www.jquery.com/' target='_blank'>jQuery</a>.
-		p Visit the <a href='http://keystonejs.com/guide' target='_blank'>Getting Started</a> guide to learn how to customise it.
-		hr
-		if user && user.canAccessKeystone
-			p
-				a(href='/keystone').btn.btn-lg.btn-primary Open the Admin UI
-		else
-			p We have created a default Admin user for you with the email <strong>felix.wutschke@gmail.com</strong> and the password <strong>admin</strong>.
-			p
-				a(href='/keystone/signin', style='margin-right: 10px').btn.btn-lg.btn-primary Sign in
-				|  to use the Admin UI.
-		hr
-		p Remember to <a href='https://github.com/keystonejs/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
-			| <a href='https://twitter.com/keystonejs' target='_blank'>follow @keystonejs</a> on twitter for updates.
+	.container#home
+		section#masthead
+			h1 Felix Wutschke
+		section#aboutme
+			p I'm a programmer with a passion for life; love to create, to experience, to ponder.
+			h2#top Me in ten seconds
+			p I live in Fremont, California; attending <a href='https://42.us.org'>42</a>; deeply interested in pragmatic AI; love stoic philosophy; love to read and write.
+			h2 What am I doing now?
+			p See <a href='/now'>my 'now' page</a>
+			h2 Contact me?
+			p See <a href='/contact'>why you should</a>, then <a href='/contact'>just drop me a line.</a> I respond to all.
+		section#newstarticles
+			h2 Newest Articles
+				small(id='home-all')
+					a(href='/blog')   	see all
+			ul
+				li
+					a(href='#') Pleasure is the greatest incentive to evil
+				li
+					a(href='#') Pleasure is the greatest incentive to evil
+				li
+					a(href='#') Pleasure is the greatest incentive to evil
+				li
+					a(href='#') Pleasure is the greatest incentive to evil
+				li
+					a(href='#') Pleasure is the greatest incentive to evil
+
+		section#projects
+			h2 Projects
+			p I host some of my work over at <a href='/'>github</a>. Go check it out if you're interested.
+			h3 At the moment
+			p I am building a UNIX shell <strong>from scratch</strong> in C.
+
+
+			
