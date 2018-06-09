@@ -58,7 +58,7 @@ html
 								li: a(href='/keystone') Open Keystone
 							li: a(href='/keystone/signout') Sign Out
 						else
-							li#hireme: a(href='/hireme') Hire me!
+							li#hireme(class=(section == hireMe.key ? 'active' : null)): a(href=hireMe.href)= hireMe.label
 
 		//- HEADER
 		#header: .container
